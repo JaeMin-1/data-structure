@@ -1,3 +1,0 @@
-A program that translates a high level language to a machine
-language is called a compiler. A compiler is thus somewhat peculiar
-sort of program and its output is another program.
