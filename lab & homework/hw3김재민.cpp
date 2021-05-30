@@ -1,31 +1,31 @@
 ////////////////////////////////////////////////////////////////////////
-// Name : ±èÀç¹Î
+// Name : ê¹€ì¬ë¯¼
 // Student ID : 20181592
 // Program ID : hw3
-// Description : ¸®½ºÆ®¿¡ ¿ø¼Ò¸¦ Ãß°¡ÇÏ°í »èÁ¦ÇÏ´Â µî ¿©·¯ ¿É¼ÇÀ» ¼±ÅÃÇØ ¸®½ºÆ®¸¦ ÆíÁıÇÒ ¼ö ÀÖ´Â ÇÁ·Î±×·¥
+// Description : ë¦¬ìŠ¤íŠ¸ì— ì›ì†Œë¥¼ ì¶”ê°€í•˜ê³  ì‚­ì œí•˜ëŠ” ë“± ì—¬ëŸ¬ ì˜µì…˜ì„ ì„ íƒí•´ ë¦¬ìŠ¤íŠ¸ë¥¼ í¸ì§‘í•  ìˆ˜ ìˆëŠ” í”„ë¡œê·¸ë¨
 //
-// Algorithm :  ½ÇÇàÇÒ ÇÔ¼ö¿¡ ÇØ´çÇÏ´Â ¹øÈ£¸¦ ÀÔ·ÂÇÏ°í, ÇÊ¿ä½Ã¿£ ¼ıÀÚµµ ÀÔ·ÂÇÑ´Ù
-//              ¹øÈ£¿¡ µû¸¥ ÇÔ¼öµéÀÌ ½ÇÇàµÇ°í ¸®½ºÆ®´Â ÇÔ¼öÀÇ ¸í·É¿¡ µû¶ó ÆíÁıµÈ´Ù
-//              ¸Å¹ø ÇÔ¼ö ½ÇÇàÈÄ¿¡ ÇöÀç ¸®½ºÆ®¸¦ Ãâ·ÂÇÑ´Ù (Quit ÇÔ¼ö Á¦¿Ü)
+// Algorithm :  ì‹¤í–‰í•  í•¨ìˆ˜ì— í•´ë‹¹í•˜ëŠ” ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ê³ , í•„ìš”ì‹œì—” ìˆ«ìë„ ì…ë ¥í•œë‹¤
+//              ë²ˆí˜¸ì— ë”°ë¥¸ í•¨ìˆ˜ë“¤ì´ ì‹¤í–‰ë˜ê³  ë¦¬ìŠ¤íŠ¸ëŠ” í•¨ìˆ˜ì˜ ëª…ë ¹ì— ë”°ë¼ í¸ì§‘ëœë‹¤
+//              ë§¤ë²ˆ í•¨ìˆ˜ ì‹¤í–‰í›„ì— í˜„ì¬ ë¦¬ìŠ¤íŠ¸ë¥¼ ì¶œë ¥í•œë‹¤ (Quit í•¨ìˆ˜ ì œì™¸)
 //
-// Variables :  Type val;                         //³ëµåÀÇ ¿ø¼Ò ¼±¾ğ
-//              Node* next;                       //³ëµåÀÇ next ¼±¾ğ
-//              Node* prev;                       //³ëµåÀÇ prev ¼±¾ğ
-//              Node(Type data) { val = data; next = 0; prev = 0; } //³ëµå ÃÊ±âÈ­ ¹× ¼±¾ğ
-//              Node* head;                       //head ³ëµå ¼±¾ğ
-//              Node* current;                    //current ³ëµå ¼±¾ğ
-//              List() { head = 0; current = 0; } //head¿Í current¸¦ 0À¸·Î ÃÊ±âÈ­
-//              ~List();                          //Doubly Linked List¸¦ ÀüºÎ ºñ¿ò
-//              void insertAfter(Type);           //current µÚ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-//              void insertBefore(Type);          //current ¾Õ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-//              void insertFirst(Type);           //¸Ç ¾Õ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-//              void insertLast(Type);            //¸Ç µÚ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-//              void Deletecurrent();             //ÇöÀç current ³ëµå¸¦ »èÁ¦
-//              void Locatecurrent(int);          //ÇöÀç current ³ëµå¸¦ »ç¿ëÀÚ°¡ »õ·Î ¼³Á¤
-//              void Updatecurrent(int);          //ÇöÀç current ³ëµåÀÇ °ªÀ» »õ·Î ÀúÀå
-//              void DisplayList();               //ÇöÀç Doubly Linked List¸¦ Ãâ·Â
-//              void Quit();                      //¸ğµç ³ëµå¸¦ Áö¿ì°í ÇÁ·Î±×·¥ Á¾·á
-//              int main()                        //½ÇÇàÇÒ ÇÔ¼ö¿¡ ÇØ´çÇÏ´Â ¹øÈ£¸¦ ÀÔ·ÂÇÏ°í, ÇÊ¿ä½Ã¿£ ¼ıÀÚµµ ÀÔ·ÂÇÏ¿© °¢°¢ÀÇ ÇÔ¼ö¸¦ ½ÇÇàÇÏ¿© ÇÁ·Î±×·¥À» ÁøÇàÇÑ´Ù
+// Variables :  Type val;                         //ë…¸ë“œì˜ ì›ì†Œ ì„ ì–¸
+//              Node* next;                       //ë…¸ë“œì˜ next ì„ ì–¸
+//              Node* prev;                       //ë…¸ë“œì˜ prev ì„ ì–¸
+//              Node(Type data) { val = data; next = 0; prev = 0; } //ë…¸ë“œ ì´ˆê¸°í™” ë° ì„ ì–¸
+//              Node* head;                       //head ë…¸ë“œ ì„ ì–¸
+//              Node* current;                    //current ë…¸ë“œ ì„ ì–¸
+//              List() { head = 0; current = 0; } //headì™€ currentë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+//              ~List();                          //Doubly Linked Listë¥¼ ì „ë¶€ ë¹„ì›€
+//              void insertAfter(Type);           //current ë’¤ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+//              void insertBefore(Type);          //current ì•ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+//              void insertFirst(Type);           //ë§¨ ì•ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+//              void insertLast(Type);            //ë§¨ ë’¤ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+//              void Deletecurrent();             //í˜„ì¬ current ë…¸ë“œë¥¼ ì‚­ì œ
+//              void Locatecurrent(int);          //í˜„ì¬ current ë…¸ë“œë¥¼ ì‚¬ìš©ìê°€ ìƒˆë¡œ ì„¤ì •
+//              void Updatecurrent(int);          //í˜„ì¬ current ë…¸ë“œì˜ ê°’ì„ ìƒˆë¡œ ì €ì¥
+//              void DisplayList();               //í˜„ì¬ Doubly Linked Listë¥¼ ì¶œë ¥
+//              void Quit();                      //ëª¨ë“  ë…¸ë“œë¥¼ ì§€ìš°ê³  í”„ë¡œê·¸ë¨ ì¢…ë£Œ
+//              int main()                        //ì‹¤í–‰í•  í•¨ìˆ˜ì— í•´ë‹¹í•˜ëŠ” ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ê³ , í•„ìš”ì‹œì—” ìˆ«ìë„ ì…ë ¥í•˜ì—¬ ê°ê°ì˜ í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•˜ì—¬ í”„ë¡œê·¸ë¨ì„ ì§„í–‰í•œë‹¤
 /////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
@@ -35,34 +35,34 @@ typedef int Type;
 
 class Node {
 private:
-    Type val;                         //³ëµåÀÇ ¿ø¼Ò ¼±¾ğ
-    Node* next;                       //³ëµåÀÇ next ¼±¾ğ
-    Node* prev;                       //³ëµåÀÇ prev ¼±¾ğ
-    Node(Type data) { val = data; next = 0; prev = 0; } //³ëµå ÃÊ±âÈ­ ¹× ¼±¾ğ
+    Type val;                         //ë…¸ë“œì˜ ì›ì†Œ ì„ ì–¸
+    Node* next;                       //ë…¸ë“œì˜ next ì„ ì–¸
+    Node* prev;                       //ë…¸ë“œì˜ prev ì„ ì–¸
+    Node(Type data) { val = data; next = 0; prev = 0; } //ë…¸ë“œ ì´ˆê¸°í™” ë° ì„ ì–¸
     friend class List;
 };
 
 class List {
 private:
-    Node* head;                       //head ³ëµå ¼±¾ğ
-    Node* current;                    //current ³ëµå ¼±¾ğ
+    Node* head;                       //head ë…¸ë“œ ì„ ì–¸
+    Node* current;                    //current ë…¸ë“œ ì„ ì–¸
 public:
-    List() { head = 0; current = 0; } //head¿Í current¸¦ 0À¸·Î ÃÊ±âÈ­
-    ~List();                          //Doubly Linked List¸¦ ÀüºÎ ºñ¿ò
-    void insertAfter(Type);           //current µÚ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-    void insertBefore(Type);          //current ¾Õ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-    void insertFirst(Type);           //¸Ç ¾Õ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-    void insertLast(Type);            //¸Ç µÚ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-    void Deletecurrent();             //ÇöÀç current ³ëµå¸¦ »èÁ¦
-    void Locatecurrent(int);          //ÇöÀç current ³ëµå¸¦ »ç¿ëÀÚ°¡ »õ·Î ¼³Á¤
-    void Updatecurrent(int);          //ÇöÀç current ³ëµåÀÇ °ªÀ» »õ·Î ÀúÀå
-    void DisplayList();               //ÇöÀç Doubly Linked List¸¦ Ãâ·Â
-    void Quit();                      //¸ğµç ³ëµå¸¦ Áö¿ì°í ÇÁ·Î±×·¥ Á¾·á
+    List() { head = 0; current = 0; } //headì™€ currentë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+    ~List();                          //Doubly Linked Listë¥¼ ì „ë¶€ ë¹„ì›€
+    void insertAfter(Type);           //current ë’¤ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+    void insertBefore(Type);          //current ì•ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+    void insertFirst(Type);           //ë§¨ ì•ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+    void insertLast(Type);            //ë§¨ ë’¤ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+    void Deletecurrent();             //í˜„ì¬ current ë…¸ë“œë¥¼ ì‚­ì œ
+    void Locatecurrent(int);          //í˜„ì¬ current ë…¸ë“œë¥¼ ì‚¬ìš©ìê°€ ìƒˆë¡œ ì„¤ì •
+    void Updatecurrent(int);          //í˜„ì¬ current ë…¸ë“œì˜ ê°’ì„ ìƒˆë¡œ ì €ì¥
+    void DisplayList();               //í˜„ì¬ Doubly Linked Listë¥¼ ì¶œë ¥
+    void Quit();                      //ëª¨ë“  ë…¸ë“œë¥¼ ì§€ìš°ê³  í”„ë¡œê·¸ë¨ ì¢…ë£Œ
 };
 
 /*
-~List() ÇÔ¼ö : Doubly Linked List¸¦ ÀüºÎ ºñ¿ò
-    - ¿ø¼ÒµéÀ» Ã³À½ºÎÅÍ ³¡±îÁö ¼ø¼­´ë·Î »èÁ¦ÇÔ
+~List() í•¨ìˆ˜ : Doubly Linked Listë¥¼ ì „ë¶€ ë¹„ì›€
+    - ì›ì†Œë“¤ì„ ì²˜ìŒë¶€í„° ëê¹Œì§€ ìˆœì„œëŒ€ë¡œ ì‚­ì œí•¨
 */
 List::~List() {
     Node* p;
@@ -75,11 +75,11 @@ List::~List() {
 }
 
 /*
-insertAfter() ÇÔ¼ö : current ³ëµå µÚ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-    - »õ·Î ³ÖÀ» ³ëµå temp¸¦ ¼±¾ğ ¹× ÃÊ±âÈ­
-    - if, head°¡ NULLÀÌ¸é, Áï ¸®½ºÆ®°¡ ºñ¾îÀÖÀ¸¸é temp¸¦ head·Î µĞ´Ù
-    - else if, currentÀÇ next°¡ 0ÀÌ ¾Æ´Ï¶ó¸é temp¸¦ current¿Í currentÀÇ next »çÀÌ¿¡ »ğÀÔ
-    - else, current°¡ ¸¶Áö¸· ³ëµåÀÏ °æ¿ì currentÀÇ next´Â temp
+insertAfter() í•¨ìˆ˜ : current ë…¸ë“œ ë’¤ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+    - ìƒˆë¡œ ë„£ì„ ë…¸ë“œ tempë¥¼ ì„ ì–¸ ë° ì´ˆê¸°í™”
+    - if, headê°€ NULLì´ë©´, ì¦‰ ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ìˆìœ¼ë©´ tempë¥¼ headë¡œ ë‘”ë‹¤
+    - else if, currentì˜ nextê°€ 0ì´ ì•„ë‹ˆë¼ë©´ tempë¥¼ currentì™€ currentì˜ next ì‚¬ì´ì— ì‚½ì…
+    - else, currentê°€ ë§ˆì§€ë§‰ ë…¸ë“œì¼ ê²½ìš° currentì˜ nextëŠ” temp
 */
 void List::insertAfter(Type data) {
     Node* temp = new Node(data);
@@ -99,11 +99,11 @@ void List::insertAfter(Type data) {
 }
 
 /*
-insertBefore() ÇÔ¼ö : current ³ëµå ¾Õ¿¡ »õ·Î¿î ³ëµå¸¦ insert
-    - »õ·Î ³ÖÀ» ³ëµå temp¸¦ ¼±¾ğ ¹× ÃÊ±âÈ­
-    - if, head°¡ NULLÀÌ¸é, Áï ¸®½ºÆ®°¡ ºñ¾îÀÖÀ¸¸é temp¸¦ head·Î µĞ´Ù
-    - else if, current°¡ head¶ó¸é temp¸¦ head ¾Õ¿¡ »ğÀÔ
-    - else, currentÀÇ prev°¡ 0ÀÌ ¾Æ´Ï¶ó¸é currentÀÇ prev´Â temp
+insertBefore() í•¨ìˆ˜ : current ë…¸ë“œ ì•ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+    - ìƒˆë¡œ ë„£ì„ ë…¸ë“œ tempë¥¼ ì„ ì–¸ ë° ì´ˆê¸°í™”
+    - if, headê°€ NULLì´ë©´, ì¦‰ ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì–´ìˆìœ¼ë©´ tempë¥¼ headë¡œ ë‘”ë‹¤
+    - else if, currentê°€ headë¼ë©´ tempë¥¼ head ì•ì— ì‚½ì…
+    - else, currentì˜ prevê°€ 0ì´ ì•„ë‹ˆë¼ë©´ currentì˜ prevëŠ” temp
 */
 void List::insertBefore(Type data) {
     Node* temp = new Node(data);
@@ -124,10 +124,10 @@ void List::insertBefore(Type data) {
 }
 
 /*
-insertFirst ÇÔ¼ö : ¸Ç ¾Õ¿¡ »õ·Î¿î ³ëµå¸¦ insert
- - »õ·Î ³ÖÀ» ³ëµå temp¸¦ ¼±¾ğ ¹× ÃÊ±âÈ­
- - if, head°¡ NULLÀÌ¸é temp¸¦ head·Î µĞ´Ù
- - else, temp¸¦ head·Î µĞ´Ù
+insertFirst í•¨ìˆ˜ : ë§¨ ì•ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+ - ìƒˆë¡œ ë„£ì„ ë…¸ë“œ tempë¥¼ ì„ ì–¸ ë° ì´ˆê¸°í™”
+ - if, headê°€ NULLì´ë©´ tempë¥¼ headë¡œ ë‘”ë‹¤
+ - else, tempë¥¼ headë¡œ ë‘”ë‹¤
 */
 void List::insertFirst(Type data) {
     Node* temp = new Node(data);
@@ -142,10 +142,10 @@ void List::insertFirst(Type data) {
 }
 
 /*
-insertLast ÇÔ¼ö : ¸Ç µÚ¿¡ »õ·Î¿î ³ëµå¸¦ insert
- - »õ·Î ³ÖÀ» ³ëµå temp¸¦ ¼±¾ğ ¹× ÃÊ±âÈ­
- - if, head°¡ NULLÀÌ¸é temp¸¦ head·Î µĞ´Ù
- - else, temp¸¦ ¸¶Áö¸·À¸·Î µĞ´Ù
+insertLast í•¨ìˆ˜ : ë§¨ ë’¤ì— ìƒˆë¡œìš´ ë…¸ë“œë¥¼ insert
+ - ìƒˆë¡œ ë„£ì„ ë…¸ë“œ tempë¥¼ ì„ ì–¸ ë° ì´ˆê¸°í™”
+ - if, headê°€ NULLì´ë©´ tempë¥¼ headë¡œ ë‘”ë‹¤
+ - else, tempë¥¼ ë§ˆì§€ë§‰ìœ¼ë¡œ ë‘”ë‹¤
 */
 void List::insertLast(Type data) {
     Node* temp = new Node(data);
@@ -163,13 +163,13 @@ void List::insertLast(Type data) {
 }
 
 /*
- Deletecurrent ÇÔ¼ö : ÇöÀç current ³ëµå¸¦ »èÁ¦
-    - Node *p = head => p´Â Doubly Linked ListÀÇ Ã¹ºÎºĞ ºÎÅÍ ½ÃÀÛÇØ¼­, ¸¶Áö¸· ³ëµå±îÁö ÀÌµ¿ÇÏ±â À§ÇØ ¼±¾ğ
-    - if, head°¡ NULLÀÌ¸é ¾Æ¹«°Íµµ x (DisplayList ÇÔ¼ö¿¡¼­ ¸®½ºÆ®°¡ ºñ¾ú´Ù´Â ¸Ş¼¼Áö Ãâ·Â)
-    - else if, current°¡ headÀÏ °æ¿ì head´Â headÀÇ next·Î, current´Â currentÀÇ next·Î ÃÊ±âÈ­
-    - else if, currentÀÇ next°¡ 0ÀÏ °æ¿ì currentÀÇ prev¸¦ current·Î µĞ ÈÄ currenÀÇ next¸¦ 0À¸·Î ÃÊ±âÈ­
-    - else, current°¡ Áß°£ÀÏ °æ¿ì currentÀÇ prev¿Í currentÀÇ next°¡ ÀÌ¾îÁöµµ·Ï ÇÑ´Ù.
-    - ¸¶Áö¸·À¸·Î head¸¦ »õ·Î¿î current·Î ÁöÁ¤
+ Deletecurrent í•¨ìˆ˜ : í˜„ì¬ current ë…¸ë“œë¥¼ ì‚­ì œ
+    - Node *p = head => pëŠ” Doubly Linked Listì˜ ì²«ë¶€ë¶„ ë¶€í„° ì‹œì‘í•´ì„œ, ë§ˆì§€ë§‰ ë…¸ë“œê¹Œì§€ ì´ë™í•˜ê¸° ìœ„í•´ ì„ ì–¸
+    - if, headê°€ NULLì´ë©´ ì•„ë¬´ê²ƒë„ x (DisplayList í•¨ìˆ˜ì—ì„œ ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì—ˆë‹¤ëŠ” ë©”ì„¸ì§€ ì¶œë ¥)
+    - else if, currentê°€ headì¼ ê²½ìš° headëŠ” headì˜ nextë¡œ, currentëŠ” currentì˜ nextë¡œ ì´ˆê¸°í™”
+    - else if, currentì˜ nextê°€ 0ì¼ ê²½ìš° currentì˜ prevë¥¼ currentë¡œ ë‘” í›„ currenì˜ nextë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+    - else, currentê°€ ì¤‘ê°„ì¼ ê²½ìš° currentì˜ prevì™€ currentì˜ nextê°€ ì´ì–´ì§€ë„ë¡ í•œë‹¤.
+    - ë§ˆì§€ë§‰ìœ¼ë¡œ headë¥¼ ìƒˆë¡œìš´ currentë¡œ ì§€ì •
 */
 void List::Deletecurrent() {
     Node* p = head;
@@ -194,12 +194,12 @@ void List::Deletecurrent() {
 }
 
 /*
- Locatecurrent ÇÔ¼ö : ÇöÀç current ³ëµå¸¦ »õ·Î ¼³Á¤
-    - Node *p = head => p´Â Doubly Linked ListÀÇ Ã¹ºÎºĞ ºÎÅÍ ½ÃÀÛÇØ¼­, ¸¶Áö¸· ³ëµå±îÁö ÀÌµ¿ÇÏ±â À§ÇØ ¼±¾ğ
-    - p¸¦ Linked ListÀÇ ³¡±îÁö ÀÌµ¿ÇÏ¸é¼­, countµµ °°ÀÌ Áõ°¡
-    - count´Â Linked ListÀÇ ±æÀÌ¸¦ ÀúÀåÇÏ°í ÀÔ·Â¹ŞÀº numÀÌ countº¸´Ù Å¬ °æ¿ì ¿¡·¯ ¸Ş¼¼Áö Ãâ·Â
-    - numÀÌ countº¸´Ù ÀÛÀ» °æ¿ì, num¹øÂ° ³ëµå¿Í °ªÀ» Ãâ·Â
-    - ¸¶Áö¸·À¸·Î temp¸¦ »õ·Î¿î current·Î ÁöÁ¤
+ Locatecurrent í•¨ìˆ˜ : í˜„ì¬ current ë…¸ë“œë¥¼ ìƒˆë¡œ ì„¤ì •
+    - Node *p = head => pëŠ” Doubly Linked Listì˜ ì²«ë¶€ë¶„ ë¶€í„° ì‹œì‘í•´ì„œ, ë§ˆì§€ë§‰ ë…¸ë“œê¹Œì§€ ì´ë™í•˜ê¸° ìœ„í•´ ì„ ì–¸
+    - pë¥¼ Linked Listì˜ ëê¹Œì§€ ì´ë™í•˜ë©´ì„œ, countë„ ê°™ì´ ì¦ê°€
+    - countëŠ” Linked Listì˜ ê¸¸ì´ë¥¼ ì €ì¥í•˜ê³  ì…ë ¥ë°›ì€ numì´ countë³´ë‹¤ í´ ê²½ìš° ì—ëŸ¬ ë©”ì„¸ì§€ ì¶œë ¥
+    - numì´ countë³´ë‹¤ ì‘ì„ ê²½ìš°, numë²ˆì§¸ ë…¸ë“œì™€ ê°’ì„ ì¶œë ¥
+    - ë§ˆì§€ë§‰ìœ¼ë¡œ tempë¥¼ ìƒˆë¡œìš´ currentë¡œ ì§€ì •
 */
 void List::Locatecurrent(int num) {
     Node* p = head;
@@ -215,7 +215,7 @@ void List::Locatecurrent(int num) {
         if (count < num) cout << "No such a line!" << endl;        
         else {
             p = head;                 
-            count = 1;    //num¹øÂ° ÀÚ¸®¸¦ Ã£±âÀ§ÇØ count ÃÊ±âÈ­ ÈÄ while¹® ÁøÀÔ          
+            count = 1;    //numë²ˆì§¸ ìë¦¬ë¥¼ ì°¾ê¸°ìœ„í•´ count ì´ˆê¸°í™” í›„ whileë¬¸ ì§„ì…          
             while (count <= num) {     
                 if (count == num) { temp = p; break; }   
                 p = p->next;
@@ -228,8 +228,8 @@ void List::Locatecurrent(int num) {
 }
 
 /*
-Updatecurrent ÇÔ¼ö : ÇöÀç current ³ëµåÀÇ °ªÀ» »õ·Î ÀúÀå
-    - ÀÔ·ÂÇÑ ¼ıÀÚ¸¦ »õ·Î¿î current·Î º¯°æ
+Updatecurrent í•¨ìˆ˜ : í˜„ì¬ current ë…¸ë“œì˜ ê°’ì„ ìƒˆë¡œ ì €ì¥
+    - ì…ë ¥í•œ ìˆ«ìë¥¼ ìƒˆë¡œìš´ currentë¡œ ë³€ê²½
 */
 void List::Updatecurrent(int num) {
     if (head != 0) {
@@ -238,9 +238,9 @@ void List::Updatecurrent(int num) {
 }
 
 /*
-DisplayList ÇÔ¼ö : ÇöÀç Doubly Linked List¸¦ Ãâ·Â
-    -if, ¸®½ºÆ®°¡ ºñ¾úÀ¸¸é ºñ¾ú´Ù´Â ¸Ş¼¼Áö Ãâ·Â
-    -else. ¸®½ºÆ®°¡ Á¸ÀçÇÑ´Ù¸é ¸®½ºÆ® Ãâ·Â
+DisplayList í•¨ìˆ˜ : í˜„ì¬ Doubly Linked Listë¥¼ ì¶œë ¥
+    -if, ë¦¬ìŠ¤íŠ¸ê°€ ë¹„ì—ˆìœ¼ë©´ ë¹„ì—ˆë‹¤ëŠ” ë©”ì„¸ì§€ ì¶œë ¥
+    -else. ë¦¬ìŠ¤íŠ¸ê°€ ì¡´ì¬í•œë‹¤ë©´ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
 */
 void List::DisplayList() {
     Node* p;
@@ -257,21 +257,21 @@ void List::DisplayList() {
 }
 
 /*
-Quit ÇÔ¼ö : ¸ğµç ³ëµå¸¦ Áö¿ì°í ÇÁ·Î±×·¥ Á¾·á
-    - ÀüºÎ ºñ¿ì°í mainÇÔ¼öÀÇ while¹®À» Å»ÃâÇÏ¿© ÇÁ·Î±×·¥ Á¾·á(main ÇÔ¼ö¿¡¼­ break; À» ÅëÇØ ±¸Çö)
+Quit í•¨ìˆ˜ : ëª¨ë“  ë…¸ë“œë¥¼ ì§€ìš°ê³  í”„ë¡œê·¸ë¨ ì¢…ë£Œ
+    - ì „ë¶€ ë¹„ìš°ê³  mainí•¨ìˆ˜ì˜ whileë¬¸ì„ íƒˆì¶œí•˜ì—¬ í”„ë¡œê·¸ë¨ ì¢…ë£Œ(main í•¨ìˆ˜ì—ì„œ break; ì„ í†µí•´ êµ¬í˜„)
 */
 void List::Quit() {
     List::~List();
 }
 
 /*
-main ÇÔ¼ö
-    - ½ÇÇàÇÒ ÇÔ¼ö¿¡ ÇØ´çÇÏ´Â ¹øÈ£¸¦ ÀÔ·ÂÇÏ°í, ÇÊ¿ä½Ã¿£ ¼ıÀÚµµ ÀÔ·ÂÇÏ¿© °¢°¢ÀÇ ÇÔ¼ö¸¦ ½ÇÇàÇÏ¿© ÇÁ·Î±×·¥À» ÁøÇàÇÑ´Ù
+main í•¨ìˆ˜
+    - ì‹¤í–‰í•  í•¨ìˆ˜ì— í•´ë‹¹í•˜ëŠ” ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ê³ , í•„ìš”ì‹œì—” ìˆ«ìë„ ì…ë ¥í•˜ì—¬ ê°ê°ì˜ í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•˜ì—¬ í”„ë¡œê·¸ë¨ì„ ì§„í–‰í•œë‹¤
 */
 int main() {
     List l1;
-    int command = 0;        //½ÇÇàÇÏ°í ½ÍÀº ÇÔ¼ö¸¦ ½ÇÇàÇÏ±â À§ÇØ ¼±¾ğ ¹× ÃÊ±âÈ­
-    int num = 0;            //ÇÔ¼ö ½ÇÇà¿¡ ÇÊ¿äÇÑ ¼ıÀÚ¸¦ ÀÔ·ÂÇÏ±â À§ÇØ ¼±¾ğ ¹× ÃÊ±âÈ­
+    int command = 0;        //ì‹¤í–‰í•˜ê³  ì‹¶ì€ í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•˜ê¸° ìœ„í•´ ì„ ì–¸ ë° ì´ˆê¸°í™”
+    int num = 0;            //í•¨ìˆ˜ ì‹¤í–‰ì— í•„ìš”í•œ ìˆ«ìë¥¼ ì…ë ¥í•˜ê¸° ìœ„í•´ ì„ ì–¸ ë° ì´ˆê¸°í™”
     while (true) {
         cout << "Command : 1)insert-after  2)insert-before  3)insert-first  4)insert-last  5)deletecurrent  6)locatecurrent  7)updatecurrent  8)displaylist  9)quit => ";
         cin >> command;
@@ -320,10 +320,10 @@ int main() {
         }
         else if (command == 9) {
             l1.Quit();
-            break;                              //Quit ½ÇÇà½Ã ÇÁ·Î±×·¥ Á¾·á
+            break;                              //Quit ì‹¤í–‰ì‹œ í”„ë¡œê·¸ë¨ ì¢…ë£Œ
         }
         else {
-            cout << "bad command" << endl;      //À§ Ä¿¸Çµå ¿Ü¿¡ ÀÔ·Â ½Ã ¿¡·¯¸Ş¼¼Áö Ãâ·Â
+            cout << "bad command" << endl;      //ìœ„ ì»¤ë§¨ë“œ ì™¸ì— ì…ë ¥ ì‹œ ì—ëŸ¬ë©”ì„¸ì§€ ì¶œë ¥
             continue;
         }
     }

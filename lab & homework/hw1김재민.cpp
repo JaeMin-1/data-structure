@@ -1,24 +1,24 @@
 ////////////////////////////////////////////////////////////////////////
-// Name : ±èÀç¹Î
+// Name : ê¹€ìž¬ë¯¼
 // Student ID : 20181592
 // Program ID : hw1
-// Description : ¿ÜºÎÀÇ ÆÄÀÏÀ» ÀÔ·Â¹Þ¾Æ ÀÚÀ¯ÀÚÀç·Î ¿ÞÂÊ Á¤·Ä, ¿À¸¥ÂÊ Á¤·Ä, °¡¿îµ¥ Á¤·ÄÀ» ÇÒ ¼ö ÀÖµµ·Ï ÇÏ±â À§ÇÑ ÇÁ·Î±×·¥
+// Description : ì™¸ë¶€ì˜ íŒŒì¼ì„ ìž…ë ¥ë°›ì•„ ìžìœ ìžìž¬ë¡œ ì™¼ìª½ ì •ë ¬, ì˜¤ë¥¸ìª½ ì •ë ¬, ê°€ìš´ë° ì •ë ¬ì„ í•  ìˆ˜ ìžˆë„ë¡ í•˜ê¸° ìœ„í•œ í”„ë¡œê·¸ëž¨
 //
-// Algorithm :  ¾î¶² Á¤·ÄÀ» ½ÇÇàÇÒÁö È¤Àº, ÇÁ·Î±×·¥À» Á¾·áÇÒÁö ÇØ´çÇÏ´Â ¼ýÀÚ¸¦ ÀÔ·ÂÇÑ´Ù.
-//              1À» ÀÔ·ÂÇß´Ù¸é ¿ÜºÎÀÇ ÆÄÀÏ(hw1.txt)À» ¹Þ¾Æ¿Í¼­ ¿ÞÂÊ Á¤·ÄÀ» ÇØ¼­ Ãâ·ÂÇÏ°í
-//              2À» ÀÔ·ÂÇß´Ù¸é ¿ÜºÎÀÇ ÆÄÀÏ(hw1.txt)À» ¹Þ¾Æ¿Í¼­ ¿À¸¥ÂÊ Á¤·ÄÀ» ÇØ¼­ Ãâ·ÂÇÏ¸ç,
-//              3À» ÀÔ·ÂÇß´Ù¸é ¿ÜºÎÀÇ ÆÄÀÏ(hw1.txt)À» ¹Þ¾Æ¿Í¼­ °¡¿îµ¥ Á¤·ÄÀ» ÇØ¼­ Ãâ·ÂÇÑ´Ù.
-//              ¸¶Áö¸·À¸·Î 4¸¦ ÀÔ·ÂÇÑ´Ù¸é ÇÁ·Î±×·¥À» Á¾·áÇÑ´Ù.
+// Algorithm :  ì–´ë–¤ ì •ë ¬ì„ ì‹¤í–‰í• ì§€ í˜¹ì€, í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œí• ì§€ í•´ë‹¹í•˜ëŠ” ìˆ«ìžë¥¼ ìž…ë ¥í•œë‹¤.
+//              1ì„ ìž…ë ¥í–ˆë‹¤ë©´ ì™¸ë¶€ì˜ íŒŒì¼(hw1.txt)ì„ ë°›ì•„ì™€ì„œ ì™¼ìª½ ì •ë ¬ì„ í•´ì„œ ì¶œë ¥í•˜ê³ 
+//              2ì„ ìž…ë ¥í–ˆë‹¤ë©´ ì™¸ë¶€ì˜ íŒŒì¼(hw1.txt)ì„ ë°›ì•„ì™€ì„œ ì˜¤ë¥¸ìª½ ì •ë ¬ì„ í•´ì„œ ì¶œë ¥í•˜ë©°,
+//              3ì„ ìž…ë ¥í–ˆë‹¤ë©´ ì™¸ë¶€ì˜ íŒŒì¼(hw1.txt)ì„ ë°›ì•„ì™€ì„œ ê°€ìš´ë° ì •ë ¬ì„ í•´ì„œ ì¶œë ¥í•œë‹¤.
+//              ë§ˆì§€ë§‰ìœ¼ë¡œ 4ë¥¼ ìž…ë ¥í•œë‹¤ë©´ í”„ë¡œê·¸ëž¨ì„ ì¢…ë£Œí•œë‹¤.
 //
-// Variables :  Left_justification() - ¿ÞÂÊ Á¤·Ä
-//              Right_justification() - ¿À¸¥ÂÊ Á¤·Ä
-//              Centered_justification() - °¡¿îµ¥ Á¤·Ä
-//              length_check(int count) - ºó °ø°£ÀÇ ±æÀÌ È®ÀÎ
-//              char buffer[80] - µ¥ÀÌÅÍ¸¦ ÀÐ±â À§ÇÑ ±æÀÌ 80ÀÇ charÇü ¹è¿­ ¼±¾ð
-//              char stringbuffer[80] - µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÏ±â À§ÇÑ ±æÀÌ 80ÀÇ charÇü ¹è¿­ ¼±¾ð
-//              int i = 0 - ÀÎµ¦½º°ª i ¼±¾ð ¹× ÃÊ±âÈ­
-//              ifstream infile - ¿ÜºÎÀÇ ÆÄÀÏ ¹Þ¾Æ¿À±â
-//              int num = 0 - Ã³À½ ÀÔ·ÂÇÒ num À» ¼±¾ð ¹× 0À¸·Î ÃÊ±âÈ­
+// Variables :  Left_justification() - ì™¼ìª½ ì •ë ¬
+//              Right_justification() - ì˜¤ë¥¸ìª½ ì •ë ¬
+//              Centered_justification() - ê°€ìš´ë° ì •ë ¬
+//              length_check(int count) - ë¹ˆ ê³µê°„ì˜ ê¸¸ì´ í™•ì¸
+//              char buffer[80] - ë°ì´í„°ë¥¼ ì½ê¸° ìœ„í•œ ê¸¸ì´ 80ì˜ charí˜• ë°°ì—´ ì„ ì–¸
+//              char stringbuffer[80] - ë°ì´í„°ë¥¼ ì¶œë ¥í•˜ê¸° ìœ„í•œ ê¸¸ì´ 80ì˜ charí˜• ë°°ì—´ ì„ ì–¸
+//              int i = 0 - ì¸ë±ìŠ¤ê°’ i ì„ ì–¸ ë° ì´ˆê¸°í™”
+//              ifstream infile - ì™¸ë¶€ì˜ íŒŒì¼ ë°›ì•„ì˜¤ê¸°
+//              int num = 0 - ì²˜ìŒ ìž…ë ¥í•  num ì„ ì„ ì–¸ ë° 0ìœ¼ë¡œ ì´ˆê¸°í™”
 /////////////////////////////////////////////////////////////////////////
 
 #include <iostream>
@@ -30,23 +30,23 @@ void Right_justification();
 void Centered_justification();
 void length_check(int count);
 
-char buffer[80];        // µ¥ÀÌÅÍ¸¦ ÀÐ±â À§ÇÑ ±æÀÌ 80ÀÇ charÇü ¹è¿­ ¼±¾ð
-char stringbuffer[80];  // µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇÏ±â À§ÇÑ ±æÀÌ 80ÀÇ charÇü ¹è¿­ ¼±¾ð
-int i = 0;              // ÀÎµ¦½º°ª i ¼±¾ð ¹× ÃÊ±âÈ­
+char buffer[80];        // ë°ì´í„°ë¥¼ ì½ê¸° ìœ„í•œ ê¸¸ì´ 80ì˜ charí˜• ë°°ì—´ ì„ ì–¸
+char stringbuffer[80];  // ë°ì´í„°ë¥¼ ì¶œë ¥í•˜ê¸° ìœ„í•œ ê¸¸ì´ 80ì˜ charí˜• ë°°ì—´ ì„ ì–¸
+int i = 0;              // ì¸ë±ìŠ¤ê°’ i ì„ ì–¸ ë° ì´ˆê¸°í™”
 
 int main() {
 	int num = 0;
 	
-	while (num != 4) {                                               // 4. Terminate °¡ ¾Æ´Ò½Ã °è¼Ó ½ÇÇà
+	while (num != 4) {                                               // 4. Terminate ê°€ ì•„ë‹ì‹œ ê³„ì† ì‹¤í–‰
 		cout << "**************************************" << endl;    
-		cout << "1. Left     Justification" << endl;                 // ¿ÞÂÊ Á¤·Ä
-		cout << "2. Right    Justification" << endl;                 // ¿À¸¥ÂÊ Á¤·Ä
-		cout << "3. Centered Justification" << endl;                 // °¡¿îµ¥ Á¤·Ä
-		cout << "4. Terminate" << endl << endl;                      // Á¾·á
+		cout << "1. Left     Justification" << endl;                 // ì™¼ìª½ ì •ë ¬
+		cout << "2. Right    Justification" << endl;                 // ì˜¤ë¥¸ìª½ ì •ë ¬
+		cout << "3. Centered Justification" << endl;                 // ê°€ìš´ë° ì •ë ¬
+		cout << "4. Terminate" << endl << endl;                      // ì¢…ë£Œ
 
-		cout << "Enter your choice : "; cin >> num; cout << endl;    // ¿øÇÏ´Â Á¤·Ä È¤Àº Á¾·á¿¡ ÇØ´çÇÏ´Â ¼ýÀÚ ÀÔ·Â
+		cout << "Enter your choice : "; cin >> num; cout << endl;    // ì›í•˜ëŠ” ì •ë ¬ í˜¹ì€ ì¢…ë£Œì— í•´ë‹¹í•˜ëŠ” ìˆ«ìž ìž…ë ¥
 
-		for (int i = 0; i < 8; i++) {                                // ÀÚ¸´¼ö¸¦ Àß º¸¿©ÁÖ±â À§ÇÑ ¼ýÀÚ¶óÀÎ
+		for (int i = 0; i < 8; i++) {                                // ìžë¦¿ìˆ˜ë¥¼ ìž˜ ë³´ì—¬ì£¼ê¸° ìœ„í•œ ìˆ«ìžë¼ì¸
 			cout << "1234567890";
 		} cout << endl << endl;
 
@@ -67,55 +67,55 @@ int main() {
 	return 0;
 }
 
-void Left_justification() {                // ¿ÞÂÊ Á¤·Ä
-    ifstream infile;                       // ¿ÜºÎÀÇ ÆÄÀÏ ¹Þ¾Æ¿À±â
+void Left_justification() {                // ì™¼ìª½ ì •ë ¬
+    ifstream infile;                       // ì™¸ë¶€ì˜ íŒŒì¼ ë°›ì•„ì˜¤ê¸°
     infile.open("hw1.txt", ios::in);
     if (infile.fail()) {
-        cout << "ÆÄÀÏÀ» ¿­¼ö ¾ø½À´Ï´Ù" << endl;
+        cout << "íŒŒì¼ì„ ì—´ìˆ˜ ì—†ìŠµë‹ˆë‹¤" << endl;
         exit(1);
     }
 
-    while (infile.getline(buffer, 80)) {   // ÇÑ ¶óÀÎÀ» ÀÐÀ½
-        while (buffer[i] != '\0') {        // ¶óÀÎÀÇ ¹®ÀÚ°¡ '\0'ÀÌ ¾Æ´Ò ¶§±îÁö, Áï ¶óÀÎÀÇ ³¡ÀÌ ¾Æ´Ò ¶§±îÁö
-            stringbuffer[i] = buffer[i];   // Ãâ·ÂÇÒ ¹è¿­ stringbuffer¿¡ µ¥ÀÌÅÍ »ðÀÔ
-            i++;                           // ÀÎµ¦½º °ª Áõ°¡.
+    while (infile.getline(buffer, 80)) {   // í•œ ë¼ì¸ì„ ì½ìŒ
+        while (buffer[i] != '\0') {        // ë¼ì¸ì˜ ë¬¸ìžê°€ '\0'ì´ ì•„ë‹ ë•Œê¹Œì§€, ì¦‰ ë¼ì¸ì˜ ëì´ ì•„ë‹ ë•Œê¹Œì§€
+            stringbuffer[i] = buffer[i];   // ì¶œë ¥í•  ë°°ì—´ stringbufferì— ë°ì´í„° ì‚½ìž…
+            i++;                           // ì¸ë±ìŠ¤ ê°’ ì¦ê°€.
         }
-        stringbuffer[i] = '\0';            // end of line Ãß°¡
-        cout << stringbuffer << endl;      // stringbuffer Ãâ·Â
-        stringbuffer[0] = '\0';            // ´ÙÀ½ ¶óÀÎÀ» »õ·Î ¹Þ±â À§ÇØ stringbuffer¸¦ ´Ù½Ã '\0'À¸·Î ÃÊ±âÈ­
-                                           // (* hw1.txt °°Àº °æ¿ì´Â ÇÊ¿ä°¡ ¾øÁö¸¸, ¾Õ ¶óÀÎº¸´Ù µÞ ¶óÀÎÀÌ Âª´Ù¸é ²À ÇÊ¿äÇÔ)
-        i = 0;                             // ÀÎµ¦½º °ª i ¿ª½Ã 0À¸·Î ÃÊ±âÈ­
+        stringbuffer[i] = '\0';            // end of line ì¶”ê°€
+        cout << stringbuffer << endl;      // stringbuffer ì¶œë ¥
+        stringbuffer[0] = '\0';            // ë‹¤ìŒ ë¼ì¸ì„ ìƒˆë¡œ ë°›ê¸° ìœ„í•´ stringbufferë¥¼ ë‹¤ì‹œ '\0'ìœ¼ë¡œ ì´ˆê¸°í™”
+                                           // (* hw1.txt ê°™ì€ ê²½ìš°ëŠ” í•„ìš”ê°€ ì—†ì§€ë§Œ, ì•ž ë¼ì¸ë³´ë‹¤ ë’· ë¼ì¸ì´ ì§§ë‹¤ë©´ ê¼­ í•„ìš”í•¨)
+        i = 0;                             // ì¸ë±ìŠ¤ ê°’ i ì—­ì‹œ 0ìœ¼ë¡œ ì´ˆê¸°í™”
     }
     cout << endl;
 
     infile.close();
 }
 
-void Right_justification() {               // ¿À¸¥ÂÊ Á¤·Ä         
-    ifstream infile;                       // ¿ÜºÎÀÇ ÆÄÀÏ ¹Þ¾Æ¿À±â
+void Right_justification() {               // ì˜¤ë¥¸ìª½ ì •ë ¬         
+    ifstream infile;                       // ì™¸ë¶€ì˜ íŒŒì¼ ë°›ì•„ì˜¤ê¸°
     infile.open("hw1.txt", ios::in);
     if (infile.fail()) {
-        cout << "ÆÄÀÏÀ» ¿­¼ö ¾ø½À´Ï´Ù" << endl;
+        cout << "íŒŒì¼ì„ ì—´ìˆ˜ ì—†ìŠµë‹ˆë‹¤" << endl;
         exit(1);
     }
 
-    while (infile.getline(buffer, 80)) {   // ÇÑ ¶óÀÎÀ» ÀÐÀ½
-        while (buffer[i] != '\0') {        // ¶óÀÎÀÇ ¹®ÀÚ°¡ '\0'ÀÌ ¾Æ´Ò ¶§±îÁö, Áï ¶óÀÎÀÇ ³¡ÀÌ ¾Æ´Ò ¶§±îÁö
-            i++;                           // ÀÎµ¦½º °ª Áõ°¡
+    while (infile.getline(buffer, 80)) {   // í•œ ë¼ì¸ì„ ì½ìŒ
+        while (buffer[i] != '\0') {        // ë¼ì¸ì˜ ë¬¸ìžê°€ '\0'ì´ ì•„ë‹ ë•Œê¹Œì§€, ì¦‰ ë¼ì¸ì˜ ëì´ ì•„ë‹ ë•Œê¹Œì§€
+            i++;                           // ì¸ë±ìŠ¤ ê°’ ì¦ê°€
         }
 
-        length_check(i);                   // ºó °ø°£ÀÇ ±æÀÌ Ã¼Å©
-        i = 0;                             // ÀÎµ¦½º °ªÀ» ´Ù½Ã 0À¸·Î ÃÊ±âÈ­
+        length_check(i);                   // ë¹ˆ ê³µê°„ì˜ ê¸¸ì´ ì²´í¬
+        i = 0;                             // ì¸ë±ìŠ¤ ê°’ì„ ë‹¤ì‹œ 0ìœ¼ë¡œ ì´ˆê¸°í™”
 
         while (buffer[i] != '\0') {
-            stringbuffer[i] = buffer[i];   // Ãâ·ÂÇÒ ¹è¿­ stringbuffer¿¡ µ¥ÀÌÅÍ »ðÀÔ.
-            i++;                           // ÀÎµ¦½º °ª Áõ°¡
+            stringbuffer[i] = buffer[i];   // ì¶œë ¥í•  ë°°ì—´ stringbufferì— ë°ì´í„° ì‚½ìž….
+            i++;                           // ì¸ë±ìŠ¤ ê°’ ì¦ê°€
         }
 
-        stringbuffer[i] = '\0';            // end of line Ãß°¡
-        cout << stringbuffer << endl;      // stringbuffer Ãâ·Â
-        stringbuffer[0] = '\0';            // ´ÙÀ½ ¶óÀÎÀ» »õ·Î ¹Þ±â À§ÇØ stringbuffer¸¦ ´Ù½Ã '\0'À¸·Î ÃÊ±âÈ­
-        i = 0;                             // ÀÎµ¦½º °ª i ¿ª½Ã 0À¸·Î ÃÊ±âÈ­
+        stringbuffer[i] = '\0';            // end of line ì¶”ê°€
+        cout << stringbuffer << endl;      // stringbuffer ì¶œë ¥
+        stringbuffer[0] = '\0';            // ë‹¤ìŒ ë¼ì¸ì„ ìƒˆë¡œ ë°›ê¸° ìœ„í•´ stringbufferë¥¼ ë‹¤ì‹œ '\0'ìœ¼ë¡œ ì´ˆê¸°í™”
+        i = 0;                             // ì¸ë±ìŠ¤ ê°’ i ì—­ì‹œ 0ìœ¼ë¡œ ì´ˆê¸°í™”
         
     }
     cout << endl;
@@ -123,41 +123,41 @@ void Right_justification() {               // ¿À¸¥ÂÊ Á¤·Ä
     infile.close();
 }
 
-void Centered_justification() {            // °¡¿îµ¥ Á¤·Ä
-    int blank_space = 0;                   // ºóÄ­ °è»êÇØ¼­ ³ÖÀ» º¯¼ö blank_space ¼±¾ð
+void Centered_justification() {            // ê°€ìš´ë° ì •ë ¬
+    int blank_space = 0;                   // ë¹ˆì¹¸ ê³„ì‚°í•´ì„œ ë„£ì„ ë³€ìˆ˜ blank_space ì„ ì–¸
 
-    ifstream infile;                       // ¿ÜºÎÀÇ ÆÄÀÏ ¹Þ¾Æ¿À±â
+    ifstream infile;                       // ì™¸ë¶€ì˜ íŒŒì¼ ë°›ì•„ì˜¤ê¸°
     infile.open("hw1.txt", ios::in);
     if (infile.fail()) {
-        cout << "ÆÄÀÏÀ» ¿­¼ö ¾ø½À´Ï´Ù" << endl;
+        cout << "íŒŒì¼ì„ ì—´ìˆ˜ ì—†ìŠµë‹ˆë‹¤" << endl;
         exit(1);
     }
 
-    while (infile.getline(buffer, 80)) {   // ÇÑ ¶óÀÎÀ» ÀÐÀ½
-        while (buffer[i] != '\0') {        // ¶óÀÎÀÇ ¹®ÀÚ°¡ '\0'ÀÌ ¾Æ´Ò ¶§±îÁö, Áï ¶óÀÎÀÇ ³¡ÀÌ ¾Æ´Ò ¶§±îÁö
-            i++;                           // ÀÎµ¦½º °ª Áõ°¡
+    while (infile.getline(buffer, 80)) {   // í•œ ë¼ì¸ì„ ì½ìŒ
+        while (buffer[i] != '\0') {        // ë¼ì¸ì˜ ë¬¸ìžê°€ '\0'ì´ ì•„ë‹ ë•Œê¹Œì§€, ì¦‰ ë¼ì¸ì˜ ëì´ ì•„ë‹ ë•Œê¹Œì§€
+            i++;                           // ì¸ë±ìŠ¤ ê°’ ì¦ê°€
         }
 
-        blank_space = (79 - i) / 2;        // °¡¿îµ¥ Á¤·ÄÀ» À§ÇØ 2·Î ³ª´« °ªÀ» ÀúÀå
-        i = 0;                             // ÀÎµ¦½º °ªÀ» ´Ù½Ã 0À¸·Î ÃÊ±âÈ­
+        blank_space = (79 - i) / 2;        // ê°€ìš´ë° ì •ë ¬ì„ ìœ„í•´ 2ë¡œ ë‚˜ëˆˆ ê°’ì„ ì €ìž¥
+        i = 0;                             // ì¸ë±ìŠ¤ ê°’ì„ ë‹¤ì‹œ 0ìœ¼ë¡œ ì´ˆê¸°í™”
 
         for (int j = 0; j <= blank_space; j++)
-            cout << ' ';                   // ºóÄ­ ¼ö¸¸Å­ °ø¹é Ãâ·Â
+            cout << ' ';                   // ë¹ˆì¹¸ ìˆ˜ë§Œí¼ ê³µë°± ì¶œë ¥
 
-        while (buffer[i] != '\0') {        // ¶óÀÎÀÇ ¹®ÀÚ°¡ '\0'ÀÌ ¾Æ´Ò ¶§±îÁö, Áï ¶óÀÎÀÇ ³¡ÀÌ ¾Æ´Ò ¶§±îÁö
-            stringbuffer[i] = buffer[i];   // Ãâ·ÂÇÒ ¹è¿­ stringbuffer¿¡ µ¥ÀÌÅÍ »ðÀÔ
-            i++;                           // ÀÎµ¦½º °ª Áõ°¡
+        while (buffer[i] != '\0') {        // ë¼ì¸ì˜ ë¬¸ìžê°€ '\0'ì´ ì•„ë‹ ë•Œê¹Œì§€, ì¦‰ ë¼ì¸ì˜ ëì´ ì•„ë‹ ë•Œê¹Œì§€
+            stringbuffer[i] = buffer[i];   // ì¶œë ¥í•  ë°°ì—´ stringbufferì— ë°ì´í„° ì‚½ìž…
+            i++;                           // ì¸ë±ìŠ¤ ê°’ ì¦ê°€
         }
 
-        stringbuffer[i] = '\0';            // end of line Ãß°¡
-        cout << stringbuffer << endl;      // stringbuffer Ãâ·Â
-        stringbuffer[0] = '\0';            // ´ÙÀ½ ¶óÀÎÀ» »õ·Î ¹Þ±â À§ÇØ stringbuffer¸¦ ´Ù½Ã '\0'À¸·Î ÃÊ±âÈ­
-        i = 0;                             // ÀÎµ¦½º °ª i ¿ª½Ã 0À¸·Î ÃÊ±âÈ­
+        stringbuffer[i] = '\0';            // end of line ì¶”ê°€
+        cout << stringbuffer << endl;      // stringbuffer ì¶œë ¥
+        stringbuffer[0] = '\0';            // ë‹¤ìŒ ë¼ì¸ì„ ìƒˆë¡œ ë°›ê¸° ìœ„í•´ stringbufferë¥¼ ë‹¤ì‹œ '\0'ìœ¼ë¡œ ì´ˆê¸°í™”
+        i = 0;                             // ì¸ë±ìŠ¤ ê°’ i ì—­ì‹œ 0ìœ¼ë¡œ ì´ˆê¸°í™”
     }
 
     infile.close();
 }
 
-void length_check(int count) {             // ºó °ø°£ÀÇ ±æÀÌ È®ÀÎ
-    for (int i = 0; i <= 79 - count; i++)   cout << ' ';    // ÃÖ´ë±æÀÌ 79¿¡¼­ µ¥ÀÌÅÍ ±æÀÌ¸¦ »« ¸¸Å­ °ø¹é Ãâ·Â.
+void length_check(int count) {             // ë¹ˆ ê³µê°„ì˜ ê¸¸ì´ í™•ì¸
+    for (int i = 0; i <= 79 - count; i++)   cout << ' ';    // ìµœëŒ€ê¸¸ì´ 79ì—ì„œ ë°ì´í„° ê¸¸ì´ë¥¼ ëº€ ë§Œí¼ ê³µë°± ì¶œë ¥.
 }                             
